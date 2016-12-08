@@ -37,14 +37,14 @@ const _private_state = new WeakMap();
 
 const _set = (object, name, value) => {
   if (!_private_state.has(object)) {
-    _private_state[object] = new WeakMap();
+    _private_state.set(object, new WeakMap());
   }
 
-  _private_state[object].set(name, value);
+  _private_state.get(object).set(name, value);
 };
 
 const _get = (object, name) => {
-  return _private_state[object].get(name);
+  return _private_state.get(object).get(name);
 };
 
 const _private_foo = (context) => {
