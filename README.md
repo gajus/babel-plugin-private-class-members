@@ -14,7 +14,7 @@ Uses an underscore prefix notation convention to identify private class members.
 Input:
 
 ```js
-class {
+class Foo {
   constructor () {
     this._bar = 'Hello, World!';
     this._foo();
@@ -30,14 +30,11 @@ class {
 Output:
 
 ```js
-
-const _private_bar = '_' + Math.random() * 1e20;
-
 const _private_state = new WeakMap();
 
 const _set = (object, name, value) => {
   if (!_private_state.has(object)) {
-    _private_state.set(object, new WeakMap());
+    _private_state.set(object, new Map());
   }
 
   _private_state.get(object).set(name, value);
@@ -51,7 +48,7 @@ const _private_foo = (context) => {
   console.log(_get(context, 'bar'));
 };
 
-class {
+class Foo {
   constructor () {
     _set(this, 'bar', 'Hello, World!');
     _private_foo(this);
