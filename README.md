@@ -2,6 +2,9 @@
 
 Uses an underscore prefix notation convention to identify private class members. Transpiles them into members that are unpredictable at a runtime.
 
+* [Example transpilations](#example-transpilations)
+* [Motivation](#motivation)
+
 > Note:
 > This is research stage experiment.
 > I am looking for feedback to evaluate usefulness/ demand.
