@@ -28,7 +28,6 @@ Output:
 
 ```js
 const _private_bar = '_' + Math.random() * 1e20;
-const _private_foo = '_' + Math.random() * 1e20;
 
 const _private_foo = (context) => {
   console.log(context[_private_bar]);
