@@ -30,20 +30,21 @@ class {
 Output:
 
 ```js
+
 const _private_bar = '_' + Math.random() * 1e20;
 
-const _private_state = {};
+const _private_state = new WeakMap();
 
 const _set = (object, name, value) => {
-  if (!_private_state[object]) {
-    _private_state[object] = {};
+  if (!_private_state.has(object)) {
+    _private_state[object] = new WeakMap();
   }
 
-  _private_state[object][name] = value;
+  _private_state[object].set(name, value);
 };
 
 const _get = (object, name) => {
-  return _private_state[object][name];
+  return _private_state[object].get(name);
 };
 
 const _private_foo = (context) => {
