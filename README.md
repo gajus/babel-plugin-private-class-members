@@ -29,14 +29,28 @@ Output:
 ```js
 const _private_bar = '_' + Math.random() * 1e20;
 
+const _private_state = {};
+
+const _set = (object, name, value) => {
+  if (!_private_state[object]) {
+    _private_state[object] = {};
+  }
+
+  _private_state[object][name] = value;
+};
+
+const _get = (object, name) => {
+  return _private_state[object][name];
+};
+
 const _private_foo = (context) => {
   console.log(context[_private_bar]);
 };
 
 class {
   constructor () {
-    this[_private_bar] = 'Hello, World!';
-    _private_foo();
+    _set(this, 'bar', 'Hello, World!');
+    _private_foo(this);
   }
 }
 
