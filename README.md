@@ -44,7 +44,7 @@ const _get = (object, name) => {
 };
 
 const _private_foo = (context) => {
-  console.log(context[_private_bar]);
+  console.log(_get(context, 'bar'));
 };
 
 class {
