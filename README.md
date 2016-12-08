@@ -30,14 +30,14 @@ Output:
 const _private_bar = '_' + Math.random() * 1e20;
 const _private_foo = '_' + Math.random() * 1e20;
 
+const _private_foo = (context) => {
+  console.log(context[_private_bar]);
+};
+
 class {
   constructor () {
     this[_private_bar] = 'Hello, World!';
-    this[_private_foo]();
-  }
-
-  [_private_foo] () {
-    console.log(this[_private_bar]);
+    _private_foo();
   }
 }
 
